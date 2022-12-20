@@ -42,9 +42,49 @@ const restaurant = {
     },
 
     orderPasta: function (ing1, ing2, ing3) {
-        console.log(`Here is your delicious pasta with ${ing1} ${ing2} ${ing3}`);
+        console.log(
+            `Here is your delicious pasta with ${ing1} ${ing2} ${ing3}`
+        );
+    },
+    orderPizza: function (mainIngredient, ...othersIngredients) {
+        console.log(mainIngredient);
+        console.log(othersIngredients);
     },
 };
+
+// 1) Destructuring
+
+// SPREAD, because on RIGHT side of =
+const arr5 = [1, 2, ...[3, 4]];
+
+// REST
+const [a, b, ...others] = [1, 2, 3, 4, 5];
+console.log(a, b, ...others);
+
+const [pizza, , Risotto, ...otherFood] = [
+    ...restaurant.mainMenu,
+    ...restaurant.starterMenu,
+];
+console.log(pizza, Risotto, otherFood);
+
+// Objects
+const { sat, ...weekDays } = restaurant.openingHours;
+console.log(weekDays);
+
+//  2) Functions
+const add = function (...numbers) {
+    let sum = 0;
+    for (let i = 0; i < numbers.length; i++) sum += numbers[i];
+    console.log(sum);
+};
+add(2, 3);
+add(5, 3, 7, 2);
+
+const x = [23, 5, 7];
+add(...x);
+
+restaurant.orderPizza('mushroom','onions','olives','spinach')
+restaurant.orderPizza('mushrooms')
 
 // restaurant.orderDelivery({
 //     time: '22:30',
@@ -87,47 +127,45 @@ const restaurant = {
 // ----------------------- SPREAD OPERATORS ----------------- //
 
 // Utiliser le spread operator ... (ajoute les valeurs d'un tableau a un autre tableau)
-const arr = [7, 8, 9];
-const badNewArr = [1, 2, arr[0], arr[1], arr[2]];
-console.log(badNewArr);
+// const arr = [7, 8, 9];
+// const badNewArr = [1, 2, arr[0], arr[1], arr[2]];
+// console.log(badNewArr);
 
-const newArr = [1, 2, ...arr];
-console.log(newArr);
+// const newArr = [1, 2, ...arr];
+// console.log(newArr);
 
-console.log(...newArr);
+// console.log(...newArr);
 
-const newMenu = [...restaurant.mainMenu, 'Gnocci'];
-console.log(newMenu);
+// const newMenu = [...restaurant.mainMenu, 'Gnocci'];
+// console.log(newMenu);
 
-// Copy array
-const mainMenuCopy = [...restaurant.mainMenu];
+// // Copy array
+// const mainMenuCopy = [...restaurant.mainMenu];
 
-// Join 2 Arrays
-const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
-console.log(...menu);
+// // Join 2 Arrays
+// const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+// console.log(...menu);
 
-// Iterables are: arrays, strings, maps, sets but NOT an OBJECT
-const str = 'Jonas';
-const letters = [...str, '', '.S'];
-console.log(...letters);
-console.log(...str);
-// console.log(`${...str}Schedtman`); //NOT WORKING
+// // Iterables are: arrays, strings, maps, sets but NOT an OBJECT
+// const str = 'Jonas';
+// const letters = [...str, '', '.S'];
+// console.log(...letters);
+// console.log(...str);
+// // console.log(`${...str}Schedtman`); //NOT WORKING
 
-// Real-world example
-const ingredients = [
-    // prompt("Let's make pasta! Ingredient 1 ?"),
-    // prompt('Ingredient 2?'),
-    // prompt('Ingredient 3?'),
-];
-console.log(ingredients);
-restaurant.orderPasta(...ingredients);
+// // Real-world example
+// const ingredients = [
+//     // prompt("Let's make pasta! Ingredient 1 ?"),
+//     // prompt('Ingredient 2?'),
+//     // prompt('Ingredient 3?'),
+// ];
+// console.log(ingredients);
+// restaurant.orderPasta(...ingredients);
 
-// Object 
-const newRestaurant = {foundedIn: 1998, ...restaurant,founder:'Guiseppe'}
-console.log(newRestaurant);
+// // Object
+// const newRestaurant = { foundedIn: 1998, ...restaurant, founder: 'Guiseppe' };
+// console.log(newRestaurant);
 
-const restaurantCopy = {...restaurant};
-restaurantCopy.name ='Ristorante Roma'
-console.log(restaurant.name,restaurantCopy.name);
-
-
+// const restaurantCopy = { ...restaurant };
+// restaurantCopy.name = 'Ristorante Roma';
+// console.log(restaurant.name, restaurantCopy.name);
