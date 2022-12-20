@@ -42,40 +42,69 @@ const restaurant = {
     },
 };
 
-restaurant.orderDelivery({
-    time: '22:30',
-    adress: 'Via del Sole,21',
-    mainIndex: 2,
-    starterIndex: 2,
-});
+// restaurant.orderDelivery({
+//     time: '22:30',
+//     adress: 'Via del Sole,21',
+//     mainIndex: 2,
+//     starterIndex: 2,
+// });
 
-restaurant.orderDelivery({
-    adress: '20 rue de la Soif',
-    mainIndex: 2,
-});
+// restaurant.orderDelivery({
+//     adress: '20 rue de la Soif',
+//     mainIndex: 2,
+// });
 
-const { name, openingHours, categories } = restaurant;
-console.log(name, openingHours, categories);
+// const { name, openingHours, categories } = restaurant;
+// console.log(name, openingHours, categories);
 
-const {
-    name: restaurantName,
-    openingHours: hours,
-    categories: tags,
-} = restaurant;
-console.log(restaurantName, hours, tags);
-// Default values
-const { menu = [], starterMenu: starters = [] } = restaurant;
-console.log(menu, starters);
+// const {
+//     name: restaurantName,
+//     openingHours: hours,
+//     categories: tags,
+// } = restaurant;
+// console.log(restaurantName, hours, tags);
+// // Default values
+// const { menu = [], starterMenu: starters = [] } = restaurant;
+// console.log(menu, starters);
 
-// Mutating variables
-let a = 111;
-let b = 999;
-const obj = { a: 23, b: 7, c: 14 };
-({ a, b } = obj);
-console.log(a, b);
+// // Mutating variables
+// let a = 111;
+// let b = 999;
+// const obj = { a: 23, b: 7, c: 14 };
+// ({ a, b } = obj);
+// console.log(a, b);
 
-// Nested objects
-const {
-    fri: { open: o, close: c },
-} = openingHours;
-console.log(o, c);
+// // Nested objects
+// const {
+//     fri: { open: o, close: c },
+// } = openingHours;
+// console.log(o, c);
+
+// ----------------------- SPREAD OPERATORS ----------------- //
+
+// Utiliser le spread operator ... (ajoute les valeurs d'un tableau a un autre tableau)
+const arr = [7, 8, 9];
+const badNewArr = [1, 2, arr[0], arr[1], arr[2]];
+console.log(badNewArr);
+
+const newArr = [1, 2, ...arr];
+console.log(newArr);
+
+console.log(...newArr);
+
+const newMenu = [...restaurant.mainMenu,'Gnocci'];
+console.log(newMenu);
+
+// Copy array
+const mainMenuCopy = [...restaurant.mainMenu]
+
+// Join 2 Arrays
+const menu = [...restaurant.starterMenu,...restaurant.mainMenu]
+console.log(...menu);
+
+// Iterables are: arrays, strings, maps, sets but NOT an OBJECT
+const str = 'Jonas'
+const letters = [...str,'','.S']
+console.log(...letters);
+console.log(...str);
+// console.log(`${...str}Schedtman`); //NOT WORKING
