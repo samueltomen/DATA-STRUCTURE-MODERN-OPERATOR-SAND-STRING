@@ -53,7 +53,7 @@ console.log(mainp, mainp2, mainp3);
 // console.log(newArr2);
 
 // Default values
-const [p=1,q=1,r=1] = [8,2,2]
+const [p=1,q=1,r=1] = [8,2,4]
 console.log(p,q,r);
 
 
