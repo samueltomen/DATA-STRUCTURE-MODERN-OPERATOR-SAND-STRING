@@ -82,8 +82,8 @@ rest2.numGuests ??= 10;
 rest1.owner &&= '<ANONYMOUS>'
 rest2.owner &&= '<ANONYMOUS>'
 
-console.log(rest1);
-console.log(rest2);
+// console.log(rest1);
+// console.log(rest2);
 
 ///////////////////////////////////////////////////
 // The Nullish Coalescing Operator
@@ -241,3 +241,77 @@ console.log(rest2);
 // const restaurantCopy = { ...restaurant };
 // restaurantCopy.name = 'Ristorante Roma';
 // console.log(restaurant.name, restaurantCopy.name);
+
+// Coding Challenge #1
+
+
+// Data of the game from the Web
+const game = {
+    team1: 'Bayern Munich',
+    team2: 'Borrussia Dortmund',
+    players: [
+        [
+            'Neuer',
+            'Pavard',
+            'Martinez',
+            'Alaba',
+            'Davies',
+            'Kimmich',
+            'Goretzka',
+            'Coman',
+            'Muller',
+            'Gnarby',
+            'Lewandowski',
+        ],
+        [
+            'Burki',
+            'Schulz',
+            'Hummels',
+            'Akanji',
+            'Hakimi',
+            'Weigl',
+            'Witsel',
+            'Hazard',
+            'Brandt',
+            'Sancho',
+            'Gotze',
+        ],
+    ],
+    score: '4:0',
+    scored: ['Lewandowski', 'Gnarby', 'Lewandowski',
+    'Hummels'],
+    date: 'Nov 9th, 2037',
+    odds: {
+        team1: 1.33,
+        x: 3.25,
+        team2: 6.5,
+    },
+};
+
+// const {game.players[1],...players} = players
+console.log('--------- DEFINIS LES EQUIPE DANS LES TABLEAU--------------');
+const players1 = game.players[0]
+const players2 = game.players[1]
+console.log(players1);
+console.log(players2);
+
+console.log('---------- METTRE LE GARDIEN DANS UNE VARIABLE --------------');
+const gk = players1[0]
+console.log(gk);
+
+console.log('---- CREER UN TABLEAU AVEC TOUS LES JOUEURS SAUF LE GARDIEN ------');
+
+
+const fieldPlayers = 
+console.log([fieldPlayers]);
+
+
+console.log('------ TABLEAU QUI CONTIENT TOUS LES JOUEURS------');
+const allPlayers = [...players1,...players2]
+console.log(allPlayers);
+
+
+
+
+
+
