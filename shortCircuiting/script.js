@@ -52,16 +52,24 @@ const restaurant = {
     },
 };
 
-const rest1 = {
-    name: 'Capri',
-    // numGuests: 20,
-    numGuests: 0,
-};
+// Boucle for of
+const menu = [...restaurant.starterMenu,...restaurant.mainMenu]
 
-const rest2 = {
-    name: 'La Piazza',
-    owner: 'Giovanni Rossi',
-};
+for (const item of menu)console.log(item);
+
+for(const item of menu.entries()){
+    console.log(`${item[0]+1}: ${item[1]}`);
+}
+// const rest1 = {
+//     name: 'Capri',
+//     // numGuests: 20,
+//     numGuests: 0,
+// };
+
+// const rest2 = {
+//     name: 'La Piazza',
+//     owner: 'Giovanni Rossi',
+// };
 
 // // OR assignement operator
 // rest1.numGuests = rest1.numGuests || 10;
@@ -71,19 +79,19 @@ const rest2 = {
 // rest1.numGuests ||= 10;
 // rest2.numGuests ||= 10;
 
-// // nullish assignement operator (null or undefined)
-rest1.numGuests ??= 10;
-rest2.numGuests ??= 10;
+// // // nullish assignement operator (null or undefined)
+// rest1.numGuests ??= 10;
+// rest2.numGuests ??= 10;
 
-// AND assignements operator (retourne la valeur false)
-// rest1.owner = rest1.owner && '<ANONYMOUS>'
-// rest2.owner = rest2.owner && '<ANONYMOUS>'
-// Simplification de l'operation du dessus 
-rest1.owner &&= '<ANONYMOUS>'
-rest2.owner &&= '<ANONYMOUS>'
+// // AND assignements operator (retourne la valeur false)
+// // rest1.owner = rest1.owner && '<ANONYMOUS>'
+// // rest2.owner = rest2.owner && '<ANONYMOUS>'
+// // Simplification de l'operation du dessus 
+// rest1.owner &&= '<ANONYMOUS>'
+// rest2.owner &&= '<ANONYMOUS>'
 
-console.log(rest1);
-console.log(rest2);
+// console.log(rest1);
+// console.log(rest2);
 
 ///////////////////////////////////////////////////
 // The Nullish Coalescing Operator
