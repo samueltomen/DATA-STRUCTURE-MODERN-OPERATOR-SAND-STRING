@@ -4,10 +4,10 @@
 const flights =
     '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
 
-    const weekdays = ['mon','tue','wed','thu','fri','sat','sun']
+const weekdays = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
 // Data needed for first part of the section
 const hours = {
-    [weekdays[3]]: {
+    [weekdays[0]]: {
         open: 12,
         close: 22,
     },
@@ -15,7 +15,7 @@ const hours = {
         open: 11,
         close: 23,
     },
-    [weekdays[6]]:{
+    [weekdays[6]]: {
         open: 0, // Open 24 hours
         close: 24,
     },
@@ -29,7 +29,7 @@ const restaurant = {
     mainMenu: ['Pizza', 'Pasta', 'Risotto'],
 
     // ES6 ehanced object litteral
-     hours,
+    hours,
 
     order(starterIndex, mainIndex) {
         return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
@@ -56,6 +56,29 @@ const restaurant = {
         console.log(othersIngredients);
     },
 };
+
+// if(restaurant.hours && restaurant.hours.mon)
+// console.log(restaurant.hours.mon.open);
+
+// WITH optional chaining
+// ? verifie si la propriété existe, si ce n'est pas le cas elle retournera undefined or null
+console.log(restaurant.hours.mon?.open);
+console.log(restaurant.hours.tue?.open);
+
+const days = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+for (const day of days) {
+    console.log(day);
+    const open = restaurant.hours[day]?.open || ' we are closed';
+    console.log(`On ${day}, we are ${day?.open} ${open}`);
+}
+
+// Methods
+console.log(restaurant.order?.(0, 1) ?? 'Method does not exist');
+
+// Arrays
+const users = [{ name: 'Jonas', email: 'heelo@jonas.com' }];
+
+console.log(users[0]?.name ?? 'Users array is empty');
 
 // // Boucle for of
 // const menu = [...restaurant.starterMenu,...restaurant.mainMenu]
@@ -91,7 +114,7 @@ const restaurant = {
 // // AND assignements operator (retourne la valeur false)
 // // rest1.owner = rest1.owner && '<ANONYMOUS>'
 // // rest2.owner = rest2.owner && '<ANONYMOUS>'
-// // Simplification de l'operation du dessus 
+// // Simplification de l'operation du dessus
 // rest1.owner &&= '<ANONYMOUS>'
 // rest2.owner &&= '<ANONYMOUS>'
 
