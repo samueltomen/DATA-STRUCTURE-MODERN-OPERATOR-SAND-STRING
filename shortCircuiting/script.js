@@ -52,35 +52,45 @@ const restaurant = {
     },
 };
 
-console.log('------- OR -------');
-// use ANY data types, return ANY data type, short-circuitting
-// Si la première valeur est veridique il renverra toujours celle ci
-console.log( 3 || 'Jonas');
-console.log('' || 'Jonas');
-console.log(true || 0);
-console.log(undefined || null);
-console.log(undefined || 0 || '' || "Hello" || 23 || null);
-
-
-const guests1 = restaurant.numGuests ? restaurant.numGuests : 10
-console.log(guests1);
-
 restaurant.numGuests = 0
 const guest2 = restaurant.numGuests || 10
 console.log(guest2);
-console.log(restaurant.numGuests);
 
-console.log('------- AND -------');
+// Nullish : null and undefined (NOT 0 or '')
+const guestCorrect = restaurant.numGuests ?? 10
+console.log(guestCorrect);
 
-console.log(0 && 'Jonas');
-console.log(7 && 'Jonas');
-console.log('Hello' && 23 && null && 'jonas');
 
-// Practical example
-if( restaurant.orderPizza){
-    restaurant.orderPizza('mushroom' ,'spinach')
-}
-restaurant.orderPizza && restaurant.orderPizza ('spinach', 'mushromm')
+
+// console.log('------- OR -------');
+// // use ANY data types, return ANY data type, short-circuitting
+// // Si la première valeur est veridique il renverra toujours celle ci
+// console.log( 3 || 'Jonas');
+// console.log('' || 'Jonas');
+// console.log(true || 0);
+// console.log(undefined || null);
+// console.log(undefined || 0 || '' || "Hello" || 23 || null);
+
+
+// const guests1 = restaurant.numGuests ? restaurant.numGuests : 10
+// console.log(guests1);
+
+// restaurant.numGuests = 0
+// const guest2 = restaurant.numGuests || 10
+// console.log(guest2);
+// console.log(restaurant.numGuests);
+
+// console.log('------- AND -------');
+
+// console.log(0 && 'Jonas');
+// console.log(7 && 'Jonas');
+// console.log('Hello' && 23 && null && 'jonas');
+
+// // Practical example
+// if( restaurant.orderPizza){
+//     restaurant.orderPizza('mushroom' ,'spinach')
+// }
+// restaurant.orderPizza && restaurant.orderPizza ('spinach', 'mushromm')
 
 
 
