@@ -52,41 +52,73 @@ const restaurant = {
     },
 };
 
-console.log(3 || 'Jonas');
+console.log('------- OR -------');
+// use ANY data types, return ANY data type, short-circuitting
+// Si la première valeur est veridique il renverra toujours celle ci
+console.log( 3 || 'Jonas');
+console.log('' || 'Jonas');
+console.log(true || 0);
+console.log(undefined || null);
+console.log(undefined || 0 || '' || "Hello" || 23 || null);
 
-// 1) Destructuring
 
-// SPREAD, because on RIGHT side of =
-const arr5 = [1, 2, ...[3, 4]];
+const guests1 = restaurant.numGuests ? restaurant.numGuests : 10
+console.log(guests1);
 
-// REST
-const [a, b, ...others] = [1, 2, 3, 4, 5];
-console.log(a, b, ...others);
+restaurant.numGuests = 0
+const guest2 = restaurant.numGuests || 10
+console.log(guest2);
+console.log(restaurant.numGuests);
 
-const [pizza, , Risotto, ...otherFood] = [
-    ...restaurant.mainMenu,
-    ...restaurant.starterMenu,
-];
-console.log(pizza, Risotto, otherFood);
+console.log('------- AND -------');
 
-// Objects
-const { sat, ...weekDays } = restaurant.openingHours;
-console.log(weekDays);
+console.log(0 && 'Jonas');
+console.log(7 && 'Jonas');
+console.log('Hello' && 23 && null && 'jonas');
 
-//  2) Functions
-const add = function (...numbers) {
-    let sum = 0;
-    for (let i = 0; i < numbers.length; i++) sum += numbers[i];
-    console.log(sum);
-};
-add(2, 3);
-add(5, 3, 7, 2);
+// Practical example
+if( restaurant.orderPizza){
+    restaurant.orderPizza('mushroom' ,'spinach')
+}
+restaurant.orderPizza && restaurant.orderPizza ('spinach', 'mushromm')
 
-const x = [23, 5, 7];
-add(...x);
 
-restaurant.orderPizza('mushroom','onions','olives','spinach')
-restaurant.orderPizza('mushrooms')
+
+
+
+// // 1) Destructuring
+
+// // SPREAD, because on RIGHT side of =
+// const arr5 = [1, 2, ...[3, 4]];
+
+// // REST
+// const [a, b, ...others] = [1, 2, 3, 4, 5];
+// console.log(a, b, ...others);
+
+// const [pizza, , Risotto, ...otherFood] = [
+//     ...restaurant.mainMenu,
+//     ...restaurant.starterMenu,
+// ];
+// console.log(pizza, Risotto, otherFood);
+
+// // Objects
+// const { sat, ...weekDays } = restaurant.openingHours;
+// console.log(weekDays);
+
+// //  2) Functions
+// const add = function (...numbers) {
+//     let sum = 0;
+//     for (let i = 0; i < numbers.length; i++) sum += numbers[i];
+//     console.log(sum);
+// };
+// add(2, 3);
+// add(5, 3, 7, 2);
+
+// const x = [23, 5, 7];
+// add(...x);
+
+// restaurant.orderPizza('mushroom','onions','olives','spinach')
+// restaurant.orderPizza('mushrooms')
 
 // restaurant.orderDelivery({
 //     time: '22:30',
