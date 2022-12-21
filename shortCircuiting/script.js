@@ -52,6 +52,8 @@ const restaurant = {
     },
 };
 
+console.log(3 || 'Jonas');
+
 // 1) Destructuring
 
 // SPREAD, because on RIGHT side of =
