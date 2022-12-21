@@ -288,7 +288,6 @@ const game = {
     },
 };
 
-// const {game.players[1],...players} = players
 console.log('--------- DEFINIS LES EQUIPE DANS LES TABLEAU--------------');
 const players1 = game.players[0]
 const players2 = game.players[1]
@@ -296,19 +295,52 @@ console.log(players1);
 console.log(players2);
 
 console.log('---------- METTRE LE GARDIEN DANS UNE VARIABLE --------------');
-const gk = players1[0]
-console.log(gk);
-
 console.log('---- CREER UN TABLEAU AVEC TOUS LES JOUEURS SAUF LE GARDIEN ------');
 
-
-const fieldPlayers = 
-console.log([fieldPlayers]);
-
+const [gk,...fieldPlayers] = players1 
+console.log(gk);
+console.log(fieldPlayers);
 
 console.log('------ TABLEAU QUI CONTIENT TOUS LES JOUEURS------');
 const allPlayers = [...players1,...players2]
 console.log(allPlayers);
+
+// Create new array for the 3 substitute players
+const players1Final = [...players1,'Thiago','Counthino','Perisic']
+console.log(players1Final);
+
+// Create a variable for each odd
+
+// const {team1, ...tim1} = game.odds
+// const {x, ...draw} = game.odds
+// const {team2, ...tim2} = game.odds
+// console.log(team1);
+// console.log(x);
+// console.log(team2);
+
+// Methode plus simple
+const {odds: {team1,x:draw, team2}} = game
+
+
+function printGoal (...playersName) {
+    console.log(...playersName);
+    console.log(game.score);
+}
+
+printGoal('Davies','Muller','Lewandowski','Kimmich')
+printGoal(...game.scored)
+
+// Elaboration du schema 
+if(team1 < team2){
+    console.log(team1);
+}else{
+    console.log(team2);
+};
+// 7.
+team1 < team2 && console.log('Team 1 is more likely to win');
+team2 < team1 && console.log('Team 2 is more likely to win');
+
+
 
 
 
