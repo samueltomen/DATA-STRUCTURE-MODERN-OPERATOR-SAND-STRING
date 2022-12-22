@@ -365,3 +365,4 @@ for (let keys of oddsValues) {
     let x = sum1 / oddsValues.length;
     console.log(x);
 }
+
