@@ -4,7 +4,15 @@
 const flights =
     '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
 
-const weekdays = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+const weekdays = [
+    'monday',
+    'tuesday',
+    'wednesday',
+    'thursday',
+    'friday',
+    'saturday',
+    'sunday',
+];
 // Data needed for first part of the section
 const hours = {
     [weekdays[0]]: {
@@ -57,28 +65,52 @@ const restaurant = {
     },
 };
 
-// if(restaurant.hours && restaurant.hours.mon)
-// console.log(restaurant.hours.mon.open);
+// Property Names
+const properties = Object.keys(hours);
+console.log(properties);
 
-// WITH optional chaining
-// ? verifie si la propriété existe, si ce n'est pas le cas elle retournera undefined or null
-console.log(restaurant.hours.mon?.open);
-console.log(restaurant.hours.tue?.open);
+let openStr = `We are open on ${properties.length} days : `;
 
-const days = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
-for (const day of days) {
+for (const day of properties) {
+    openStr += `${day}, `;
     console.log(day);
-    const open = restaurant.hours[day]?.open || ' we are closed';
-    console.log(`On ${day}, we are ${day?.open} ${open}`);
+}
+console.log(openStr);
+// Property VALUES
+const values = Object.values(hours);
+console.log(values);
+
+// Entire Object
+const entries = Object.entries(hours);
+console.log(entries);
+
+// [key, value]
+for (const [day, { open, close }] of entries) {
+    console.log(`On ${key} we open at ${open} and close at ${close}`);
 }
 
-// Methods
-console.log(restaurant.order?.(0, 1) ?? 'Method does not exist');
+// // if(restaurant.hours && restaurant.hours.mon)
+// // console.log(restaurant.hours.mon.open);
 
-// Arrays
-const users = [{ name: 'Jonas', email: 'heelo@jonas.com' }];
+// // WITH optional chaining
+// // ? verifie si la propriété existe, si ce n'est pas le cas elle retournera undefined or null
+// console.log(restaurant.hours.mon?.open);
+// console.log(restaurant.hours.tue?.open);
 
-console.log(users[0]?.name ?? 'Users array is empty');
+// const days = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+// for (const day of days) {
+//     console.log(day);
+//     const open = restaurant.hours[day]?.open || ' we are closed';
+//     console.log(`On ${day}, we are ${day?.open} ${open}`);
+// }
+
+// // Methods
+// console.log(restaurant.order?.(0, 1) ?? 'Method does not exist');
+
+// // Arrays
+// const users = [{ name: 'Jonas', email: 'heelo@jonas.com' }];
+
+// console.log(users[0]?.name ?? 'Users array is empty');
 
 // // Boucle for of
 // const menu = [...restaurant.starterMenu,...restaurant.mainMenu]
