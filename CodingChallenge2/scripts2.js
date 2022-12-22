@@ -348,21 +348,29 @@ console.log(goal);
 
 const goalEntries = Object.entries(game.scored);
 
-for (let [goal, gamePlayer] of goalEntries) {
-    goal++;
-    goal === 1
-        ? console.log(`${gamePlayer} a marquer le ${goal}er but `)
-        : console.log(`${gamePlayer} a marquer le ${goal}eme buts `);
+for (const [goal, gamePlayer] of game.scored.entries()) {
+    goal === 0
+        ? console.log(`${gamePlayer} a marquer le ${goal + 1}er but `)
+        : console.log(`${gamePlayer} a marquer le ${goal + 1}ème buts `);
 }
 
 // 2.
-
+// MON CODE ---
 const oddsValues = Object.values(game.odds);
-let sum1 = 0
+let sum1 = 0;
+for (const keys of oddsValues)
+sum1 += keys;
+let x = sum1 / oddsValues.length;
+console.log(x);
 
-for (let keys of oddsValues) {
-    sum1 += keys
-    let x = sum1 / oddsValues.length;
-    console.log(x);
+// CODE DE JONAS S
+let average = 0;
+for (const odd of oddsValues) average += odd;
+average /= oddsValues.length;
+console.log(average);
+
+// 3. //VERY HARD 
+for(const [team, odd] of Object.entries(game.odds)){
+    const teamStr = team === 'x'? 'draw':`Victory ${game[team]}`  
+    console.log(`Odd of ...${teamStr} ${odd}`);
 }
-
