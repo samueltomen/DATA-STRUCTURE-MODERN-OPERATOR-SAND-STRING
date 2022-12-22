@@ -341,6 +341,7 @@ const game = {
 // const gamePlayers = Object.values(game.scored)
 // console.log(gamePlayers);
 
+// 1.
 // Je recupere le nombre du but marquer en fonction des joueurs
 const goal = Object.keys(game.scored);
 console.log(goal);
@@ -352,4 +353,15 @@ for (let [goal, gamePlayer] of goalEntries) {
     goal === 1
         ? console.log(`${gamePlayer} a marquer le ${goal}er but `)
         : console.log(`${gamePlayer} a marquer le ${goal}eme buts `);
+}
+
+// 2.
+
+const oddsValues = Object.values(game.odds);
+let sum1 = 0
+
+for (let keys of oddsValues) {
+    sum1 += keys
+    let x = sum1 / oddsValues.length;
+    console.log(x);
 }
