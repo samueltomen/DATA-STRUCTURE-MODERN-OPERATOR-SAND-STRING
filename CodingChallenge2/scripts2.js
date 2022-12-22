@@ -4,31 +4,7 @@
 const flights =
     '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
 
-const weekdays = [
-    'monday',
-    'tuesday',
-    'wednesday',
-    'thursday',
-    'friday',
-    'saturday',
-    'sunday',
-];
 // Data needed for first part of the section
-const hours = {
-    [weekdays[0]]: {
-        open: 12,
-        close: 22,
-    },
-    [weekdays[4]]: {
-        open: 11,
-        close: 23,
-    },
-    [weekdays[6]]: {
-        open: 0, // Open 24 hours
-        close: 24,
-    },
-};
-
 const restaurant = {
     name: 'Classico Italiano',
     location: 'Via Angelo Tavanti 23, Firenze, Italy',
@@ -36,14 +12,25 @@ const restaurant = {
     starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
     mainMenu: ['Pizza', 'Pasta', 'Risotto'],
 
-    // ES6 ehanced object litteral
-    hours,
-
-    order(starterIndex, mainIndex) {
+    openingHours: {
+        thu: {
+            open: 12,
+            close: 22,
+        },
+        fri: {
+            open: 11,
+            close: 23,
+        },
+        sat: {
+            open: 0, // Open 24 hours
+            close: 24,
+        },
+    },
+    order: function (starterIndex, mainIndex) {
         return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
     },
 
-    orderDelivery({
+    orderDelivery: function ({
         starterIndex = 1,
         mainIndex = 0,
         time = '20:00',
@@ -54,82 +41,27 @@ const restaurant = {
         );
     },
 
-    orderPasta(ing1, ing2, ing3) {
+    orderPasta: function (ing1, ing2, ing3) {
         console.log(
             `Here is your delicious pasta with ${ing1} ${ing2} ${ing3}`
         );
     },
-    orderPizza(mainIngredient, ...othersIngredients) {
+    orderPizza: function (mainIngredient, ...othersIngredients) {
         console.log(mainIngredient);
         console.log(othersIngredients);
     },
 };
 
-// Property Names
-const properties = Object.keys(hours);
-console.log(properties);
+const rest1 = {
+    name: 'Capri',
+    // numGuests: 20,
+    numGuests: 0,
+};
 
-let openStr = `We are open on ${properties.length} days : `;
-
-for (const day of properties) {
-    openStr += `${day}, `;
-    console.log(day);
-}
-console.log(openStr);
-// Property VALUES
-const values = Object.values(hours);
-console.log(values);
-
-// Entire Object
-const entries = Object.entries(hours);
-console.log(entries);
-
-// [key, value]
-for (const [day, { open, close }] of entries) {
-    console.log(`On ${day} we open at ${open} and close at ${close}`);
-}
-
-// // if(restaurant.hours && restaurant.hours.mon)
-// // console.log(restaurant.hours.mon.open);
-
-// // WITH optional chaining
-// // ? verifie si la propriété existe, si ce n'est pas le cas elle retournera undefined or null
-// console.log(restaurant.hours.mon?.open);
-// console.log(restaurant.hours.tue?.open);
-
-// const days = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
-// for (const day of days) {
-//     console.log(day);
-//     const open = restaurant.hours[day]?.open || ' we are closed';
-//     console.log(`On ${day}, we are ${day?.open} ${open}`);
-// }
-
-// // Methods
-// console.log(restaurant.order?.(0, 1) ?? 'Method does not exist');
-
-// // Arrays
-// const users = [{ name: 'Jonas', email: 'heelo@jonas.com' }];
-
-// console.log(users[0]?.name ?? 'Users array is empty');
-
-// // Boucle for of
-// const menu = [...restaurant.starterMenu,...restaurant.mainMenu]
-
-// for (const item of menu)console.log(item);
-
-// for(const item of menu.entries()){
-//     console.log(`${item[0]+1}: ${item[1]}`);
-// }
-// const rest1 = {
-//     name: 'Capri',
-//     // numGuests: 20,
-//     numGuests: 0,
-// };
-
-// const rest2 = {
-//     name: 'La Piazza',
-//     owner: 'Giovanni Rossi',
-// };
+const rest2 = {
+    name: 'La Piazza',
+    owner: 'Giovanni Rossi',
+};
 
 // // OR assignement operator
 // rest1.numGuests = rest1.numGuests || 10;
@@ -139,16 +71,16 @@ for (const [day, { open, close }] of entries) {
 // rest1.numGuests ||= 10;
 // rest2.numGuests ||= 10;
 
-// // // nullish assignement operator (null or undefined)
-// rest1.numGuests ??= 10;
-// rest2.numGuests ??= 10;
+// // nullish assignement operator (null or undefined)
+rest1.numGuests ??= 10;
+rest2.numGuests ??= 10;
 
-// // AND assignements operator (retourne la valeur false)
-// // rest1.owner = rest1.owner && '<ANONYMOUS>'
-// // rest2.owner = rest2.owner && '<ANONYMOUS>'
-// // Simplification de l'operation du dessus
-// rest1.owner &&= '<ANONYMOUS>'
-// rest2.owner &&= '<ANONYMOUS>'
+// AND assignements operator (retourne la valeur false)
+// rest1.owner = rest1.owner && '<ANONYMOUS>'
+// rest2.owner = rest2.owner && '<ANONYMOUS>'
+// Simplification de l'operation du dessus
+rest1.owner &&= '<ANONYMOUS>';
+rest2.owner &&= '<ANONYMOUS>';
 
 // console.log(rest1);
 // console.log(rest2);
@@ -309,3 +241,115 @@ for (const [day, { open, close }] of entries) {
 // const restaurantCopy = { ...restaurant };
 // restaurantCopy.name = 'Ristorante Roma';
 // console.log(restaurant.name, restaurantCopy.name);
+
+// Coding Challenge #1
+
+// Data of the game from the Web
+const game = {
+    team1: 'Bayern Munich',
+    team2: 'Borrussia Dortmund',
+    players: [
+        [
+            'Neuer',
+            'Pavard',
+            'Martinez',
+            'Alaba',
+            'Davies',
+            'Kimmich',
+            'Goretzka',
+            'Coman',
+            'Muller',
+            'Gnarby',
+            'Lewandowski',
+        ],
+        [
+            'Burki',
+            'Schulz',
+            'Hummels',
+            'Akanji',
+            'Hakimi',
+            'Weigl',
+            'Witsel',
+            'Hazard',
+            'Brandt',
+            'Sancho',
+            'Gotze',
+        ],
+    ],
+    score: '4:0',
+    scored: ['Lewandowski', 'Gnarby', 'Lewandowski', 'Hummels'],
+    date: 'Nov 9th, 2037',
+    odds: {
+        team1: 1.33,
+        x: 3.25,
+        team2: 6.5,
+    },
+};
+
+// console.log('--------- DEFINIS LES EQUIPE DANS LES TABLEAU--------------');
+// const players1 = game.players[0]
+// const players2 = game.players[1]
+// console.log(players1);
+// console.log(players2);
+
+// console.log('---------- METTRE LE GARDIEN DANS UNE VARIABLE --------------');
+// console.log('---- CREER UN TABLEAU AVEC TOUS LES JOUEURS SAUF LE GARDIEN ------');
+
+// const [gk,...fieldPlayers] = players1
+// console.log(gk);
+// console.log(fieldPlayers);
+
+// console.log('------ TABLEAU QUI CONTIENT TOUS LES JOUEURS------');
+// const allPlayers = [...players1,...players2]
+// console.log(allPlayers);
+
+// // Create new array for the 3 substitute players
+// const players1Final = [...players1,'Thiago','Counthino','Perisic']
+// console.log(players1Final);
+
+// // Create a variable for each odd
+
+// // const {team1, ...tim1} = game.odds
+// // const {x, ...draw} = game.odds
+// // const {team2, ...tim2} = game.odds
+// // console.log(team1);
+// // console.log(x);
+// // console.log(team2);
+
+// // Methode plus simple
+// const {odds: {team1,x:draw, team2}} = game
+
+// function printGoal (...playersName) {
+//     console.log(...playersName);
+//     console.log(game.score);
+// }
+
+// printGoal('Davies','Muller','Lewandowski','Kimmich')
+// printGoal(...game.scored)
+
+// // Elaboration du schema
+// if(team1 < team2){
+//     console.log(team1);
+// }else{
+//     console.log(team2);
+// };
+// // 7.
+// team1 < team2 && console.log('Team 1 is more likely to win');
+// team2 < team1 && console.log('Team 2 is more likely to win');
+
+// // Je recupere la valeur (nom de chaque) de chaque joueur
+// const gamePlayers = Object.values(game.scored)
+// console.log(gamePlayers);
+
+// Je recupere le nombre du but marquer en fonction des joueurs
+const goal = Object.keys(game.scored);
+console.log(goal);
+
+const goalEntries = Object.entries(game.scored);
+
+for (let [goal, gamePlayer] of goalEntries) {
+    goal++;
+    goal === 1
+        ? console.log(`${gamePlayer} a marquer le ${goal}er but `)
+        : console.log(`${gamePlayer} a marquer le ${goal}eme buts `);
+}
