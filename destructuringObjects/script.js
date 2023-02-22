@@ -1,4 +1,3 @@
-'use strict';
 
 /* Explication : la destructuration permet de simplifier ou de réorganiser une structure de données pour la rendre 
 plus facile à utiliser et à manipuler. Dans le code ci-dessus, nous pouvons voir que la destructuration est utilisée pour extraire les propriétés d'un objet dans des variables séparées, tout en fournissant des noms de variables différents. 
@@ -8,6 +7,8 @@ lorsque l'objet est destructurer et changer les valeurs des variables.
 
 Les règles fonctionnent de la même manière que la mise en place des valeurs hachées, 
 mais sont appliquées plutôt sur un objet. */
+
+'use strict';
 
 // Définition de la variable flights qui est utilisée dans un exercice ultérieur
 const flights =
