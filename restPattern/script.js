@@ -1,3 +1,10 @@
+/* Le code montre comment utiliser l'opérateur spread (...) 
+pour copier des tableaux, lier des tableaux multiples et même passer 
+des variables comme arguments. Cela fonctionnera également sur des objets, 
+même s'ils ne sont pas itérables. Enfin, cela nous montre comment créer des 
+copies d'objets, attribuer de nouvelles valeurs et comparer les anciennes valeurs 
+aux nouvelles. */
+
 'use strict';
 
 // Définition de la variable flights qui est utilisée dans un exercice ultérieur
@@ -43,6 +50,45 @@ const restaurant = {
             `Order received ! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be received to ${adress} at ${time}`
         );
     },
+    // Définition d'une fonction pour passer commande à livrer avec un paramètre par défaut
+    orderPasta: function (ing1, ing2, ing3) {
+        console.log(
+            `Here is your delicious pasta with ${ing1}, ${ing2}, ${ing3}`
+        );
+    },
 };
 
-const arr = [];
+const arr = [7, 8, 9]; // Définition d'un tableau
+const badNewArr = [1, 2, arr[0], arr[1], arr[2]]; // Définition d'un tableau avec des valeurs extraites d'un autre tableau
+console.log(badNewArr);
+
+const NewArr = [1, 2, ...arr]; // Définition d'un tableau avec des valeurs extraites d'un autre tableau avec l'opérateur spread
+console.log(NewArr);
+
+console.log(...NewArr);
+
+const newMenu = [...restaurant.mainMenu, 'Gnocci']; // Définition d'un tableau avec des valeurs extraites d'un autre tableau avec l'opérateur spread
+console.log(newMenu);
+
+// Copy array
+const mainMenuCopy = [...restaurant.mainMenu];
+
+// Join 2 arrays
+const menu = [...restaurant.starterMenu, ...mainMenuCopy];
+console.log(menu);
+
+// Iterables are: arrays, strings, maps, sets but NOT OBJECTS
+const str = 'Jonas';
+const letters = [...str, ' ', 'S.'];
+console.log(letters);
+console.log(...str);
+// console.log(`${...str} Schmedtmann`); // Ne fonctionne pas parce que le spread operator ne peut pas être utilisé avec un objet.
+
+const newRestaurant = { ...restaurant, founder: 'Guiseppe', foundedIn: 1998 };
+console.log(newRestaurant);
+
+const restaurantCopy = { ...restaurant };
+restaurantCopy.name = 'Ristorante Roma';
+
+console.log(restaurantCopy.name);
+console.log(restaurant.name);
