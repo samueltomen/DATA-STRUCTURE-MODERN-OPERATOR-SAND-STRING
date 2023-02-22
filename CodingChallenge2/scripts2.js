@@ -199,24 +199,24 @@ rest2.owner &&= '<ANONYMOUS>';
 // ----------------------- SPREAD OPERATORS ----------------- //
 
 // Utiliser le spread operator ... (ajoute les valeurs d'un tableau a un autre tableau)
-// const arr = [7, 8, 9];
-// const badNewArr = [1, 2, arr[0], arr[1], arr[2]];
-// console.log(badNewArr);
+const arr = [7, 8, 9];
+const badNewArr = [1, 2, arr[0], arr[1], arr[2]];
+console.log(badNewArr);
 
-// const newArr = [1, 2, ...arr];
-// console.log(newArr);
+const newArr = [1, 2, ...arr];
+console.log(newArr);
 
-// console.log(...newArr);
+console.log(...newArr);
 
-// const newMenu = [...restaurant.mainMenu, 'Gnocci'];
-// console.log(newMenu);
+const newMenu = [...restaurant.mainMenu, 'Gnocci'];
+console.log(newMenu);
 
-// // Copy array
-// const mainMenuCopy = [...restaurant.mainMenu];
+// Copy array
+const mainMenuCopy = [...restaurant.mainMenu];
 
-// // Join 2 Arrays
-// const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
-// console.log(...menu);
+// Join 2 Arrays
+const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+console.log(...menu);
 
 // // Iterables are: arrays, strings, maps, sets but NOT an OBJECT
 // const str = 'Jonas';
@@ -303,18 +303,18 @@ const game = {
 // const allPlayers = [...players1,...players2]
 // console.log(allPlayers);
 
-// // Create new array for the 3 substitute players
+// Create new array for the 3 substitute players
 // const players1Final = [...players1,'Thiago','Counthino','Perisic']
 // console.log(players1Final);
 
-// // Create a variable for each odd
+// Create a variable for each odd
 
-// // const {team1, ...tim1} = game.odds
-// // const {x, ...draw} = game.odds
-// // const {team2, ...tim2} = game.odds
-// // console.log(team1);
-// // console.log(x);
-// // console.log(team2);
+// const {team1, ...tim1} = game.odds
+// const {x, ...draw} = game.odds
+// const {team2, ...tim2} = game.odds
+// console.log(team1);
+// console.log(x);
+// console.log(team2);
 
 // // Methode plus simple
 // const {odds: {team1,x:draw, team2}} = game

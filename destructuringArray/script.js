@@ -1,5 +1,3 @@
-'use strict';
-
 // Data needed for a later exercise
 const flights =
     '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
@@ -12,48 +10,47 @@ const restaurant = {
     starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
     mainMenu: ['Pizza', 'Pasta', 'Risotto'],
 
-    // Création d'une fonction permettant de selectionner un attribut dans le tableau
+    // Function to accept user's order
     order: function (starterIndex, mainIndex) {
         return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
     },
 };
 
-const arrNew = [2, 3, 4];
-const a = arrNew[0];
-const b = arrNew[1];
-const c = arrNew[2];
+// Get elements from array using brackets
+const arr = [2, 3, 4];
+const a = arr[0]; // 2
+const b = arr[1]; // 3
+const c = arr[2]; // 4
 
-const [x, y, z] = arrNew;
-console.log(x, y, z);
+// Get elements from array using destructuring assignment
+const [x, y, z] = arr;
+console.log(x, y, z); // 2, 3, 4
+console.log(arr); // [2, 3, 4]
 
+// Destructure specific values from an array note the use of comma operator
 let [main, , secondary] = restaurant.categories;
-console.log(main, secondary);
+console.log(main, secondary); // Italian Organic
 
-// Switching variables
-// const temp = main;
-// main = secondary;
-// secondary = temp;
-// console.log(main,secondary);
-
+// Swap two variables with array destructuring
 [main, secondary] = [secondary, main];
-console.log(main, secondary);
+console.log(main, secondary); // Organic Italian
 
-// receive 2 returns value from a function
+// Get array items based on index
 const [starter, mainCourse] = restaurant.order(2, 0);
-console.log(starter, mainCourse);
+console.log(starter, mainCourse); // Garlic Bread Pizza
 
 // Nested destructuring
 const nested = [2, 4, [5, 6]];
-const [mainp, , [mainp2, mainp3]] = nested;
-console.log(mainp, mainp2, mainp3);
 
-// Connerrrieeeeee !!
-// const newArr2 = []
-// newArr2.push(mainp,mainp2,mainp3)
-// console.log(newArr2);
+// Destructure "outer" and "inner" arrays at the same time
+const [i, , [j, k]] = nested;
+console.log(i, j, k); // 2 5 6
 
 // Default values
-const [p=1,q=1,r=1] = [8,2,4]
-console.log(p,q,r);
+const [p = 1, q = 1, r = 1] = [8, 9];
+console.log(p, q, r); // 8 9 1
 
-
+/* Le code ci-dessus illustre plusieurs caractéristiques importantes du destructuring en JavaScript, notamment :
+Destruction d'un tableau pour créer de nouvelles variables à partir de ses éléments ;
+Permutation de valeurs entre deux variables sans avoir besoin d'une variable temporaire;
+Affectation des valeurs par défaut à des variables si elles ne peuvent pas être assignées à un élément dans le tableau. */
