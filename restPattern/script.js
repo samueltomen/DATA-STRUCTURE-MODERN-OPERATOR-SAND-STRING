@@ -1,9 +1,9 @@
-/* Le code montre comment utiliser l'opérateur spread (...) 
-pour copier des tableaux, lier des tableaux multiples et même passer 
-des variables comme arguments. Cela fonctionnera également sur des objets, 
-même s'ils ne sont pas itérables. Enfin, cela nous montre comment créer des 
-copies d'objets, attribuer de nouvelles valeurs et comparer les anciennes valeurs 
-aux nouvelles. */
+// Le rest operator (...) est un opérateur JavaScript qui permet d'assigner les éléments restants d'une opération à une variable.
+
+/* Le rest operator (...) dans JavaScript est un opérateur qui permet de récupérer les valeurs restantes 
+d'un objet iterable (comme un tableau), et de les stocker dans une nouvelle variable.
+Par exemple, const [a, b, ...elements] = [1, 2, 3, 4]; permettrait de stocker les éléments restants
+du tableau (3 et 4) dans la nouvelle variable elements. */
 
 'use strict';
 
@@ -56,39 +56,46 @@ const restaurant = {
             `Here is your delicious pasta with ${ing1}, ${ing2}, ${ing3}`
         );
     },
+    orderPizza: function (mainIngredient, ...otherIngredients) {
+        console.log(mainIngredient);
+        console.log(otherIngredients);
+    },
 };
 
-const arr = [7, 8, 9]; // Définition d'un tableau
-const badNewArr = [1, 2, arr[0], arr[1], arr[2]]; // Définition d'un tableau avec des valeurs extraites d'un autre tableau
-console.log(badNewArr);
+//SPREAD, because on RIGHT side of =
+const arr = [1, 2, ...[3, 4]];
 
-const NewArr = [1, 2, ...arr]; // Définition d'un tableau avec des valeurs extraites d'un autre tableau avec l'opérateur spread
-console.log(NewArr);
+//REST, because on LEFT side of =
+const [a, b, ...others] = [1, 2, 3, 4, 5];
+console.log(a, b, others);
 
-console.log(...NewArr);
+const [pizza, , risotto, ...otherFood] = [
+    ...restaurant.mainMenu,
+    ...restaurant.starterMenu,
+]; //Only one spread in the rest operator
+console.log(pizza, risotto, otherFood);
 
-const newMenu = [...restaurant.mainMenu, 'Gnocci']; // Définition d'un tableau avec des valeurs extraites d'un autre tableau avec l'opérateur spread
-console.log(newMenu);
+//1) Objects
+const { sat, ...weekdays } = restaurant.openingHours;
+console.log(weekdays);
 
-// Copy array
-const mainMenuCopy = [...restaurant.mainMenu];
+//2) Functions
+const add = function (...numbers) {
+    let sum = 0;
+    for (let i = 0; i < numbers.length; i++) sum += numbers[i];
+    console.log(sum);
+};
 
-// Join 2 arrays
-const menu = [...restaurant.starterMenu, ...mainMenuCopy];
-console.log(menu);
+add(2, 3);
+add(5, 3, 7, 2);
+add(8, 2, 5, 3, 2, 1, 4);
 
-// Iterables are: arrays, strings, maps, sets but NOT OBJECTS
-const str = 'Jonas';
-const letters = [...str, ' ', 'S.'];
-console.log(letters);
-console.log(...str);
-// console.log(`${...str} Schmedtmann`); // Ne fonctionne pas parce que le spread operator ne peut pas être utilisé avec un objet.
+const x = [23, 5, 7];
+add(...x);
 
-const newRestaurant = { ...restaurant, founder: 'Guiseppe', foundedIn: 1998 };
-console.log(newRestaurant);
+restaurant.orderPizza('mushroom', 'onion', 'olives', 'spinach');
+restaurant.orderPizza('mushroom');
 
-const restaurantCopy = { ...restaurant };
-restaurantCopy.name = 'Ristorante Roma';
-
-console.log(restaurantCopy.name);
-console.log(restaurant.name);
+/* Le rest operator (...) est un opérateur JavaScript qui permet de stocker une série de valeurs sous forme tableau, et d'utiliser ces mêmes valeurs plus tard, sans les lister explicitement.
+Le rest operator est également utilisé pour passer des arguments supplémentaires à une fonction.
+Ainsi, en assignant le rest operator à une variable, on peut récupérer toutes les valeurs non-énumérées et les stocker dans un nouveau tableau, qui peut ensuite être itérée ou utilisée pour d'autres choses. */
