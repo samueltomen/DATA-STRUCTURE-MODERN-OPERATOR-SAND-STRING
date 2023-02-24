@@ -1,3 +1,5 @@
+//WORKING WITH STRINGS
+
 'use strict';
 
 // Définition de la variable flights qui est utilisée dans un exercice ultérieur
@@ -55,5 +57,38 @@ const restaurant = {
     },
 };
 
+const airline = 'TAP Air Portugal';
+const plane = 'A320';
+console.log(plane[0]);
+console.log(plane[1]);
+console.log(plane[2]);
+console.log('B737'[0]);
 
+console.log(airline.length); //Retourne la longueur de la chaine de caractères
+console.log('B737'.length);
 
+console.log(airline.indexOf('r')); //Retourne la position du premier r dans la chaine de caractères
+console.log(airline.lastIndexOf('r')); //Retourne la position du dernier r dans la chaine de caractères
+console.log(airline.indexOf('Portugal')); //Retourne la position du mot Portugal dans la chaine de caractères
+
+console.log(airline.slice(4)); //Retourne la chaine de caractères à partir de la position 4  (Air Portugal)
+console.log(airline.slice(4, 7)); //Retourne la chaine de caractères à partir de la position 4 jusqu'à la position 7 (Air)
+
+console.log(airline.slice(0, airline.indexOf(' '))); //Retourne la chaine de caractères à partir de la position 0 jusqu'à la position de l'espace (TAP)
+
+console.log(airline.slice(airline.lastIndexOf(' ') + 1)); //Retourne la chaine de caractères à partir de la position de l'espace jusqu'à la fin (Portugal)
+
+console.log(airline.slice(-2)); //Retourne les deux derniers caractères de la chaine de caractères (al)
+
+console.log(airline.slice(1, -1)); //Retourne la chaine de caractères à partir de la position 1 jusqu'à la position avant la fin (AP Air Portuga)
+
+const checkMiddleSeat = function (seat) {
+    //B and E are middle seats
+    const s = seat.slice(-1);
+    if (s === 'B' || s === 'E') console.log('You got the middle seat');
+    else console.log('You got lucky !');
+};
+
+checkMiddleSeat('11B');
+checkMiddleSeat('23C');
+checkMiddleSeat('3E');
