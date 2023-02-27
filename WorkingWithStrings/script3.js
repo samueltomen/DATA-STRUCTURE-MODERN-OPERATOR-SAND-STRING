@@ -86,6 +86,9 @@ for (const [i, row] of rows.entries()) {
     // Affichage de la chaîne de caractères créée ainsi que des symboles "✅"
     console.log(`${output.padEnd(20)}${'✅'.repeat(i + 1)}`);
 }
+
+
+
 // Notre solution
 const transformText = function (variable) {
     // Conversion de la chaîne de caractères en minuscules
